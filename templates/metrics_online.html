@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Métricas Online - Hit@10</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2 class="mb-4">Evaluación Online del Modelo</h2>
+
+    <p><strong>Hit@10 Promedio:</strong> {{ hit10_score }}</p>
+
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Distribución Hit@10" class="img-fluid my-4"/>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>User ID</th>
+                <th>Hit@10</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in hit10_data %}
+            <tr>
+                <td>{{ row.user_id }}</td>
+                <td>{{ row.hit_at_10 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/download/hit10" class="btn btn-success">Descargar CSV</a>
+    <a href="/" class="btn btn-secondary ms-2">Volver al inicio</a>
+</body>
+</html>
+
+
